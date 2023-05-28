@@ -1,13 +1,14 @@
-import logo from './css/platzi.webp';
+//import logo from './css/platzi.webp';
 //import './App.css';
 import './css/Todo.css';
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { TodoCreateButton } from './TodoCreateButton';
+// import { TodoCounter } from './TodoCounter';
+// import { TodoSearch } from './TodoSearch';
+// import { TodoList } from './TodoList';
+// import { TodoItem } from './TodoItem';
+// import { TodoCreateButton } from './TodoCreateButton';
 import React from 'react';
 import { useLocalStorage } from './useLocalStorage';
+import { AppUI } from './AppUI';
 
 // const defaultTodos = [
 //   {text: 'Ver curso de React.JS', completed:false},
@@ -52,26 +53,15 @@ function App() {
   };
 
   return (
-    <React.Fragment>
-
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-
-      <TodoList>
-        {searchedTodos.map(x => (
-          <TodoItem key={x.text} text={x.text} completed={x.completed} 
-          onComplete={() => completeTodo(x.text)} 
-          onDelete={() => deleteTodo(x.text)}          
-          />
-        ))}        
-      </TodoList>
-      
-      <TodoCreateButton />
-
-      </React.Fragment>
+    <AppUI  
+    completedTodos={completedTodos}
+    totalTodos={totalTodos}
+    searchValue={searchValue}
+    setSearchValue={setSearchValue}
+    searchedTodos={searchedTodos}
+    completeTodo={completeTodo}
+    deleteTodo={deleteTodo}
+    />
   );
 }
 
